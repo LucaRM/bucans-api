@@ -1,1 +1,5 @@
-# bucans-api
+# luca-api
+Legendary
+Universal
+Character
+Assembler
