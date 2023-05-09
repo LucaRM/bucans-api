@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "@feathersjs/feathers": "^5.0.5",
+    "@feathersjs/koa": "^5.0.5",
+    "@feathersjs/socketio": "^5.0.5"
+  }
+}
