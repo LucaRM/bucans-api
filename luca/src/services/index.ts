@@ -1,3 +1,4 @@
+import { weapon } from './weapons/weapons'
 import { character } from './characters/characters'
 import { message } from './messages/messages'
 import { user } from './users/users'
@@ -5,8 +6,9 @@ import { user } from './users/users'
 import type { Application } from '../declarations'
 
 export const services = (app: Application) => {
-  app.configure(character)
-  app.configure(message)
-  app.configure(user)
-  // All services will be registered here
+    app.configure(weapon)
+    app.configure(character)
+    app.configure(message)
+    app.configure(user)
+    // All services will be registered here
 }

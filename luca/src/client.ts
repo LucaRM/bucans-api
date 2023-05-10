@@ -4,12 +4,15 @@ import type { TransportConnection, Application } from '@feathersjs/feathers'
 import authenticationClient from '@feathersjs/authentication-client'
 import type { AuthenticationClientOptions } from '@feathersjs/authentication-client'
 
+import { weaponClient } from './services/weapons/weapons.shared'
+export type { Weapon, WeaponData, WeaponQuery, WeaponPatch } from './services/weapons/weapons.shared'
+
 import { characterClient } from './services/characters/characters.shared'
 export type {
-  Character,
-  CharacterData,
-  CharacterQuery,
-  CharacterPatch
+    Character,
+    CharacterData,
+    CharacterQuery,
+    CharacterPatch
 } from './services/characters/characters.shared'
 
 import { messageClient } from './services/messages/messages.shared'
@@ -19,7 +22,7 @@ import { userClient } from './services/users/users.shared'
 export type { User, UserData, UserQuery, UserPatch } from './services/users/users.shared'
 
 export interface Configuration {
-  connection: TransportConnection<ServiceTypes>
+    connection: TransportConnection<ServiceTypes>
 }
 
 export interface ServiceTypes {}
@@ -35,17 +38,18 @@ export type ClientApplication = Application<ServiceTypes, Configuration>
  * @returns The Feathers client application
  */
 export const createClient = <Configuration = any>(
-  connection: TransportConnection<ServiceTypes>,
-  authenticationOptions: Partial<AuthenticationClientOptions> = {}
+    connection: TransportConnection<ServiceTypes>,
+    authenticationOptions: Partial<AuthenticationClientOptions> = {}
 ) => {
-  const client: ClientApplication = feathers()
+    const client: ClientApplication = feathers()
 
-  client.configure(connection)
-  client.configure(authenticationClient(authenticationOptions))
-  client.set('connection', connection)
+    client.configure(connection)
+    client.configure(authenticationClient(authenticationOptions))
+    client.set('connection', connection)
 
-  client.configure(userClient)
-  client.configure(messageClient)
-  client.configure(characterClient)
-  return client
+    client.configure(userClient)
+    client.configure(messageClient)
+    client.configure(characterClient)
+    client.configure(weaponClient)
+    return client
 }
