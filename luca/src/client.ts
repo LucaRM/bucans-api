@@ -4,6 +4,9 @@ import type { TransportConnection, Application } from '@feathersjs/feathers'
 import authenticationClient from '@feathersjs/authentication-client'
 import type { AuthenticationClientOptions } from '@feathersjs/authentication-client'
 
+import { systemClient } from './services/system/system.shared'
+export type { System, SystemData, SystemQuery, SystemPatch } from './services/system/system.shared'
+
 import { weaponClient } from './services/weapons/weapons.shared'
 export type { Weapon, WeaponData, WeaponQuery, WeaponPatch } from './services/weapons/weapons.shared'
 
@@ -51,5 +54,6 @@ export const createClient = <Configuration = any>(
     client.configure(messageClient)
     client.configure(characterClient)
     client.configure(weaponClient)
+    client.configure(systemClient)
     return client
 }

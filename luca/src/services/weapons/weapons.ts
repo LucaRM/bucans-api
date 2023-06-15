@@ -13,6 +13,7 @@ import {
     weaponResolver
 } from './weapons.schema'
 
+import { authenticate } from '@feathersjs/authentication'
 import type { Application } from '../../declarations'
 import { WeaponService, getOptions } from './weapons.class'
 import { weaponMethods, weaponPath } from './weapons.shared'
@@ -33,7 +34,7 @@ export const weapon = (app: Application) => {
     app.service(weaponPath).hooks({
         around: {
             all: [
-                // authenticate('jwt'),
+                authenticate('jwt'),
                 schemaHooks.resolveExternal(weaponExternalResolver),
                 schemaHooks.resolveResult(weaponResolver)
             ]
