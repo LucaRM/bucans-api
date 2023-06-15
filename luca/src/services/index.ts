@@ -1,3 +1,4 @@
+import { system } from './system/system'
 import { weapon } from './weapons/weapons'
 import { character } from './characters/characters'
 import { message } from './messages/messages'
@@ -6,6 +7,7 @@ import { user } from './users/users'
 import type { Application } from '../declarations'
 
 export const services = (app: Application) => {
+    app.configure(system)
     app.configure(weapon)
     app.configure(character)
     app.configure(message)
