@@ -10,24 +10,42 @@ import { dataValidator, queryValidator } from '../../validators'
 
 export const abilityScoresSchema = Type.Object(
     {
-        _id: ObjectIdSchema(),
-        strength: Type.Number(),
-        dexterity: Type.Number(),
-        constitution: Type.Number(),
-        intelligence: Type.Number(),
-        wisdom: Type.Number(),
-        charisma: Type.Number()
+        key: Type.Number()
     },
-    { $id: 'AbilityScores', additionalProperties: false }
+    { $id: 'AbilityScores', additionalProperties: true }
 )
+
+export const savingThrowSchema = Type.Object(
+    {
+        key: Type.String()
+    },
+    { $id: 'Saving Throws', additionalProperties: true }
+)
+
+export const skillSchema = Type.Object(
+    {
+        name: Type.String(),
+        proficiency: Type.String(),
+        ability: Type.String(),
+        order: Type.String(),
+        addon: Type.Boolean()
+    },
+    { $id: 'Skill', additionalProperties: true }
+)
+
+export const skillsSchema = Type.Array(skillSchema)
 
 export const characterSchema = Type.Object(
     {
         _id: ObjectIdSchema(),
+        user: Type.String(),
+        system: Type.String(),
         name: Type.String(),
         level: Type.Number(),
         class: Type.String(),
-        abilityScores: abilityScoresSchema
+        abilityScores: abilityScoresSchema,
+        savingThrow: savingThrowSchema,
+        skills: skillsSchema
     },
     { $id: 'Character', additionalProperties: true }
 )
@@ -38,7 +56,7 @@ export const characterResolver = resolve<Character, HookContext>({})
 export const characterExternalResolver = resolve<Character, HookContext>({})
 
 // Schema for creating new entries
-export const characterDataSchema = Type.Pick(characterSchema, ['name', 'level', 'class'], {
+export const characterDataSchema = Type.Pick(characterSchema, ['name', 'level', 'class', 'user', 'system'], {
     $id: 'CharacterData'
 })
 export type CharacterData = Static<typeof characterDataSchema>

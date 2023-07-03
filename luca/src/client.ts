@@ -4,6 +4,17 @@ import type { TransportConnection, Application } from '@feathersjs/feathers'
 import authenticationClient from '@feathersjs/authentication-client'
 import type { AuthenticationClientOptions } from '@feathersjs/authentication-client'
 
+import { descriptionClient } from './services/descriptions/descriptions.shared'
+export type {
+    Description,
+    DescriptionData,
+    DescriptionQuery,
+    DescriptionPatch
+} from './services/descriptions/descriptions.shared'
+
+import { spellClient } from './services/spells/spells.shared'
+export type { Spell, SpellData, SpellQuery, SpellPatch } from './services/spells/spells.shared'
+
 import { systemClient } from './services/system/system.shared'
 export type { System, SystemData, SystemQuery, SystemPatch } from './services/system/system.shared'
 
@@ -55,5 +66,7 @@ export const createClient = <Configuration = any>(
     client.configure(characterClient)
     client.configure(weaponClient)
     client.configure(systemClient)
+    client.configure(spellClient)
+    client.configure(descriptionClient)
     return client
 }

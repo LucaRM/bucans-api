@@ -13,7 +13,6 @@ import {
     characterResolver
 } from './characters.schema'
 
-import { authenticate } from '@feathersjs/authentication'
 import type { Application } from '../../declarations'
 import { CharacterService, getOptions } from './characters.class'
 import { characterMethods, characterPath } from './characters.shared'
@@ -34,7 +33,7 @@ export const character = (app: Application) => {
     app.service(characterPath).hooks({
         around: {
             all: [
-                authenticate('jwt'),
+                // authenticate('jwt'),
                 schemaHooks.resolveExternal(characterExternalResolver),
                 schemaHooks.resolveResult(characterResolver)
             ]

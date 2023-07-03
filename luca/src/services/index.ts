@@ -1,3 +1,5 @@
+import { description } from './descriptions/descriptions'
+import { spell } from './spells/spells'
 import { system } from './system/system'
 import { weapon } from './weapons/weapons'
 import { character } from './characters/characters'
@@ -7,6 +9,8 @@ import { user } from './users/users'
 import type { Application } from '../declarations'
 
 export const services = (app: Application) => {
+    app.configure(description)
+    app.configure(spell)
     app.configure(system)
     app.configure(weapon)
     app.configure(character)
