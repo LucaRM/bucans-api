@@ -1,3 +1,4 @@
+import { inventory } from './inventory/inventory'
 import { description } from './descriptions/descriptions'
 import { spell } from './spells/spells'
 import { system } from './system/system'
@@ -9,6 +10,7 @@ import { user } from './users/users'
 import type { Application } from '../declarations'
 
 export const services = (app: Application) => {
+    app.configure(inventory)
     app.configure(description)
     app.configure(spell)
     app.configure(system)

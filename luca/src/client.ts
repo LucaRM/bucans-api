@@ -4,6 +4,14 @@ import type { TransportConnection, Application } from '@feathersjs/feathers'
 import authenticationClient from '@feathersjs/authentication-client'
 import type { AuthenticationClientOptions } from '@feathersjs/authentication-client'
 
+import { inventoryClient } from './services/inventory/inventory.shared'
+export type {
+    Inventory,
+    InventoryData,
+    InventoryQuery,
+    InventoryPatch
+} from './services/inventory/inventory.shared'
+
 import { descriptionClient } from './services/descriptions/descriptions.shared'
 export type {
     Description,
@@ -68,5 +76,6 @@ export const createClient = <Configuration = any>(
     client.configure(systemClient)
     client.configure(spellClient)
     client.configure(descriptionClient)
+    client.configure(inventoryClient)
     return client
 }

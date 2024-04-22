@@ -9,7 +9,8 @@
     "default": 10,
     "max": 50
   },
-  "mongodb": "mongodb://127.0.0.1:27017/luca",
+  "mongodbold": "mongodb+srv://lmalato:E6T1Bv1u4PwF6d0n@cluster0.w1umnql.mongodb.net/luca?retryWrites=true&w=majority",
+  "mongodb": "mongodb://lmalato:E6T1Bv1u4PwF6d0n@luca-api2.cniqkcg4wcpq.sa-east-1.docdb.amazonaws.com:27017/?tls=true&tlsCAFile=global-bundle.pem&retryWrites=false",
   "authentication": {
     "entity": "user",
     "service": "users",

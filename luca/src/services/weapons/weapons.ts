@@ -34,7 +34,7 @@ export const weapon = (app: Application) => {
     app.service(weaponPath).hooks({
         around: {
             all: [
-                authenticate('jwt'),
+                /* authenticate('jwt'), */
                 schemaHooks.resolveExternal(weaponExternalResolver),
                 schemaHooks.resolveResult(weaponResolver)
             ]
